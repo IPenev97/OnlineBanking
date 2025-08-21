@@ -59,14 +59,13 @@ fun CardsCarousel(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp), // Reserve space so layout doesn't collapse
+            .height(200.dp),
         contentAlignment = Alignment.Center
     ) {
         if (isLoading) {
-            // Show circular progress in the middle
             CircularProgressIndicator()
         } else {
-            // Show cards
+
             val visibleItems = listState.layoutInfo.visibleItemsInfo
             val viewportCenter = listState.layoutInfo.viewportEndOffset / 2
             val centerCardIndex = visibleItems.minByOrNull {
@@ -74,7 +73,6 @@ fun CardsCarousel(
             }?.index ?: 0
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                // --- Indicator dots ---
                 val totalCards = cards?.size?:0
                 if (totalCards > 1) {
                     Row(
